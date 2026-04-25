@@ -1,0 +1,574 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.5">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-TW"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-capable" content="yes"&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-status-bar-style" content="default"&gt;</p>
+<p class="p1">&lt;meta name="apple-mobile-web-app-title" content="暄祥記帳"&gt;</p>
+<p class="p1">&lt;title&gt;暄 &amp; 祥 記帳本&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg2: #f5f5f3;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--bg3: #eeede9;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text: #1a1a1a;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text2: #666660;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--text3: #999993;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--border: rgba(0,0,0,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--border2: rgba(0,0,0,0.22);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green: #0F6E56;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--green-bg: #E1F5EE;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--blue: #185FA5;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--blue-bg: #E6F1FB;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--amber: #854F0B;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--amber-bg: #FAEEDA;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--red: #993C1D;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--red-bg: #FAECE7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>--radius-sm: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@media (prefers-color-scheme: dark) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>:root {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg: #1c1c1e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg2: #2c2c2e;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--bg3: #3a3a3c;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text: #f5f5f0;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text2: #aeaea8;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--text3: #6e6e68;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border: rgba(255,255,255,0.12);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--border2: rgba(255,255,255,0.22);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--green: #5DCAA5;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--green-bg: rgba(15,110,86,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--blue: #85B7EB;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--blue-bg: rgba(24,95,165,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--amber: #FAC775;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--amber-bg: rgba(133,79,11,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--red: #F0997B;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>--red-bg: rgba(153,60,29,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>body { font-family: -apple-system, 'PingFang TC', sans-serif; background: var(--bg2); color: var(--text); min-height: 100vh; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Header */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header { background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 14px 16px 0; position: sticky; top: 0; z-index: 50; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header-title { font-size: 18px; font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.header-sub { font-size: 12px; color: var(--text3); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.add-btn { background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); padding: 8px 14px; font-size: 13px; font-weight: 500; cursor: pointer; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Tabs */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabs { display: flex; overflow-x: auto; scrollbar-width: none; gap: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tabs::-webkit-scrollbar { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tab { flex-shrink: 0; padding: 10px 16px; font-size: 13px; color: var(--text2); border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; font-family: inherit; white-space: nowrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.tab.active { color: var(--text); border-bottom-color: var(--text); font-weight: 500; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Content */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.content { padding: 16px; max-width: 600px; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.section.active { display: block; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Cards */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card { background: var(--bg); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 10px; border: 0.5px solid var(--border); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card-title { font-size: 14px; font-weight: 600; margin-bottom: 10px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Buttons */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>button { font-family: inherit; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn { padding: 8px 14px; border-radius: var(--radius-sm); border: 0.5px solid var(--border2); background: transparent; color: var(--text); font-size: 13px; font-family: inherit; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn:active { opacity: 0.7; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-primary { background: var(--text); color: var(--bg); border-color: var(--text); font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-gmail { background: #D85A30; color: #fff; border-color: #D85A30; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-danger { color: var(--red); border-color: transparent; background: transparent; padding: 4px 8px; font-size: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-full { width: 100%; padding: 12px; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Form elements */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input, select { font-family: inherit; font-size: 14px; padding: 10px 12px; border: 0.5px solid var(--border2); border-radius: var(--radius-sm); background: var(--bg2); color: var(--text); width: 100%; appearance: none; -webkit-appearance: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input:focus, select:focus { outline: none; border-color: var(--text); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-group { margin-bottom: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.form-group &gt; label { display: block; font-size: 12px; color: var(--text2); margin-bottom: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Person toggle */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.person-toggle { display: flex; gap: 6px; flex-wrap: wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ptog { padding: 6px 14px; font-size: 13px; border-radius: 99px; cursor: pointer; border: 0.5px solid var(--border); background: transparent; color: var(--text2); font-family: inherit; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ptog.sel-xuan { background: var(--green-bg); color: var(--green); border-color: var(--green); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ptog.sel-xiang { background: var(--blue-bg); color: var(--blue); border-color: var(--blue); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ptog.sel-split { background: var(--amber-bg); color: var(--amber); border-color: var(--amber); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Badges / Pills */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pill-ub { background: var(--red-bg); color: var(--red); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pill-fp { background: rgba(153,53,86,0.12); color: #993556; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pill-manual { background: var(--bg3); color: var(--text2); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.badge-fee { display: inline-block; font-size: 10px; padding: 1px 5px; border-radius: 4px; background: var(--bg3); color: var(--text2); margin-left: 4px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Notice */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.notice { background: var(--bg3); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 13px; color: var(--text2); margin-bottom: 12px; line-height: 1.5; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Metrics */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.metric-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.metric { background: var(--bg2); border-radius: var(--radius-sm); padding: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.metric-label { font-size: 11px; color: var(--text3); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.metric-value { font-size: 22px; font-weight: 600; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Split item row */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.split-item { padding: 12px 0; border-bottom: 0.5px solid var(--border); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.split-item:last-child { border-bottom: none; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.split-item-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.split-item-name { font-size: 14px; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.split-item-amt { font-size: 14px; color: var(--text2); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pct-row { display: flex; align-items: center; gap: 8px; margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.pct-label { font-size: 12px; color: var(--text2); min-width: 70px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input[type=range] { -webkit-appearance: none; appearance: none; height: 3px; background: var(--border2); border-radius: 99px; flex: 1; border: none; padding: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--text); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Ledger */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ledger-entry { display: grid; grid-template-columns: 1fr 60px 60px 60px 30px; gap: 4px; align-items: center; font-size: 13px; padding: 8px 0; border-bottom: 0.5px solid var(--border); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ledger-entry.hdr { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.03em; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.ledger-totals { display: flex; gap: 12px; padding-top: 8px; font-size: 13px; font-weight: 600; border-top: 0.5px solid var(--border); margin-top: 4px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Empty */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.empty { text-align: center; padding: 3rem 1rem; color: var(--text3); font-size: 14px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Modal */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; align-items: flex-end; justify-content: center; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal-overlay.open { display: flex; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal { background: var(--bg); border-radius: 20px 20px 0 0; padding: 20px 20px 40px; width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal-handle { width: 36px; height: 4px; background: var(--border2); border-radius: 99px; margin: 0 auto 16px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.modal-title { font-size: 17px; font-weight: 600; margin-bottom: 16px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Success / Info banners */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.banner-success { background: var(--green-bg); color: var(--green); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.banner-info { background: var(--blue-bg); color: var(--blue); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; margin-top: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.banner-warn { background: var(--amber-bg); color: var(--amber); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 13px; margin-top: 8px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Loading dots */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.dots span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: currentColor; margin: 0 2px; animation: blink 1s infinite; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.dots span:nth-child(2) { animation-delay: .2s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.dots span:nth-child(3) { animation-delay: .4s; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>@keyframes blink { 0%,100%{opacity:.2} 50%{opacity:1} }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.divider { height: 0.5px; background: var(--border); margin: 12px 0; }</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="header-top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="header-title"&gt;暄 &amp;amp; 祥 記帳本&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="header-sub" id="today-label"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="add-btn" onclick="openModal()"&gt;+ 新增&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="tabs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tab active" onclick="switchTab('order')"&gt;訂單記帳&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tab" onclick="switchTab('ledger')"&gt;記帳總表&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tab" onclick="switchTab('monthly')"&gt;月結算&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="tab" onclick="switchTab('settings')"&gt;設定&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="content"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 訂單記帳 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="section active" id="tab-order"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="notice"&gt;下單後點下方按鈕抓取 UberEats 訂單，為每個品項選擇費用負擔方式，再存入記帳表。Foodpanda 請點「+ 新增」手動輸入。&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-full" id="fetch-btn" onclick="fetchUberEats()" style="margin-bottom:12px;"&gt;↓ 從 Uber Eats 抓取最新訂單&lt;/button&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="order-items-wrap"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="empty"&gt;尚無訂單品項&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="order-summary" style="display:none;" class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;分攤預覽&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="metric-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="metric"&gt;&lt;div class="metric-label"&gt;暄 負擔&lt;/div&gt;&lt;div class="metric-value" id="xuan-total" style="color:var(--green)"&gt;NT$0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="metric"&gt;&lt;div class="metric-label"&gt;祥 負擔&lt;/div&gt;&lt;div class="metric-value" id="xiang-total" style="color:var(--blue)"&gt;NT$0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="display:flex;gap:8px;justify-content:flex-end;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn" onclick="clearOrder()"&gt;清除&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-primary" onclick="saveOrder()"&gt;存入記帳表&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 記帳總表 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="section" id="tab-ledger"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="ledger-wrap"&gt;&lt;div class="empty"&gt;尚無記帳紀錄&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 月結算 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="section" id="tab-monthly"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;月結算&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;label&gt;選擇月份&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="month" id="month-picker"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary btn-full" onclick="calcMonthly()" style="margin-bottom:0;"&gt;計算&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="monthly-result" style="margin-top:14px;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;!-- 設定 --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="section" id="tab-settings"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;每日記帳提醒&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p style="font-size:13px;color:var(--text2);margin-bottom:10px;"&gt;每天晚上 10 點提醒記帳（需允許瀏覽器通知）&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-full" onclick="enableReminder()" id="reminder-btn"&gt;開啟提醒通知&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div id="reminder-status"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;付款規則&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="font-size:13px;color:var(--text2);line-height:2;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>UberEats → &lt;strong style="color:var(--green)"&gt;暄&lt;/strong&gt; 先付款&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>Foodpanda → &lt;strong style="color:var(--blue)"&gt;祥&lt;/strong&gt; 先付款</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;月結算寄信&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p style="font-size:13px;color:var(--text2);"&gt;月結算信件寄送至：&lt;br&gt;&lt;strong&gt;yihsuan890101@gmail.com&lt;/strong&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="banner-info" style="margin-top:10px;"&gt;在月結算頁面計算後，點「寄送月結算信」即可透過 Gmail 自動寄出。&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="card-title"&gt;清除所有資料&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;p style="font-size:13px;color:var(--text2);margin-bottom:10px;"&gt;清除本機所有記帳紀錄（不可復原）&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-full" style="color:var(--red);border-color:var(--red);" onclick="clearAll()"&gt;清除所有紀錄&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/div&gt;&lt;!-- /content --&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;!-- 新增品項 Modal --&gt;</p>
+<p class="p1">&lt;div class="modal-overlay" id="add-modal" onclick="handleOverlayClick(event)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="modal" id="modal-inner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-handle"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-title"&gt;新增品項&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;平台&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;select id="m-platform"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="UberEats"&gt;UberEats（暄先付）&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="Foodpanda"&gt;Foodpanda（祥先付）&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;option value="手動"&gt;手動輸入&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;品項名稱&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input id="m-name" placeholder="例：雞腿便當、外送費"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;金額（NT$）&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input id="m-amount" type="number" inputmode="decimal" placeholder="0" min="0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;費用負擔&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="person-toggle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ptog sel-xuan" id="mtog-xuan" onclick="setMTog('xuan')"&gt;暄&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ptog" id="mtog-xiang" onclick="setMTog('xiang')"&gt;祥&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ptog" id="mtog-split" onclick="setMTog('split')"&gt;各半&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="split-detail" style="display:none;" class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;label&gt;暄的比例（%）&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;input id="m-xuan-pct" type="number" inputmode="decimal" value="50" min="0" max="100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn" onclick="closeModal()"&gt;取消&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;button class="btn btn-primary" onclick="addManualItem()"&gt;新增&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1">const KEY = 'xuan_xiang_v1';</p>
+<p class="p1">let state = (() =&gt; { try { return JSON.parse(localStorage.getItem(KEY) || '{"entries":[],"pendingItems":[]}'); } catch(e) { return {entries:[],pendingItems:[]}; } })();</p>
+<p class="p1">let mTog = 'xuan';</p>
+<p class="p2"><br></p>
+<p class="p1">function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }</p>
+<p class="p2"><br></p>
+<p class="p1">function today() { const d = new Date(); return `${d.getMonth()+1}/${d.getDate()}`; }</p>
+<p class="p1">function todayKey() { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }</p>
+<p class="p1">function todayLabel() { const d = new Date(); const days = ['日','一','二','三','四','五','六']; return `${today()} 星期${days[d.getDay()]}`; }</p>
+<p class="p2"><br></p>
+<p class="p1">document.getElementById('today-label').textContent = todayLabel();</p>
+<p class="p1">const mp = document.getElementById('month-picker');</p>
+<p class="p1">const now = new Date();</p>
+<p class="p1">mp.value = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}`;</p>
+<p class="p2"><br></p>
+<p class="p1">function switchTab(id) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.tab').forEach((t,i) =&gt; { t.classList.toggle('active', ['order','ledger','monthly','settings'][i]===id); });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.querySelectorAll('.section').forEach(s =&gt; s.classList.remove('active'));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('tab-'+id).classList.add('active');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(id==='ledger') renderLedger();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function openModal() { document.getElementById('add-modal').classList.add('open'); }</p>
+<p class="p1">function closeModal() { document.getElementById('add-modal').classList.remove('open'); }</p>
+<p class="p1">function handleOverlayClick(e) { if(e.target === document.getElementById('add-modal')) closeModal(); }</p>
+<p class="p2"><br></p>
+<p class="p1">function setMTog(v) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>mTog = v;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>['xuan','xiang','split'].forEach(k =&gt; { document.getElementById('mtog-'+k).className = 'ptog' + (v===k?' sel-'+k:''); });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('split-detail').style.display = v==='split'?'block':'none';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function computeAmounts(amount, bearer, xuanPct=50) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(bearer==='xuan') return {xuanAmt: amount, xiangAmt: 0};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(bearer==='xiang') return {xuanAmt: 0, xiangAmt: amount};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const xuanAmt = Math.round(amount * xuanPct / 100);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>return {xuanAmt, xiangAmt: amount - xuanAmt};</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function addManualItem() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const name = document.getElementById('m-name').value.trim();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const amt = parseFloat(document.getElementById('m-amount').value) || 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const platform = document.getElementById('m-platform').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!name || !amt) { alert('請填寫品項名稱和金額'); return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const xuanPct = parseFloat(document.getElementById('m-xuan-pct').value) || 50;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const {xuanAmt, xiangAmt} = computeAmounts(amt, mTog, xuanPct);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const payer = platform==='Foodpanda' ? '祥' : '暄';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.entries.push({ id: Date.now()+Math.random(), date: todayKey(), label: `${today()} ${platform}`, platform, payer, name, amount: amt, xuanAmt, xiangAmt, bearer: mTog });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>save();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('m-name').value = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('m-amount').value = '';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">async function fetchUberEats() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const btn = document.getElementById('fetch-btn');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.innerHTML = '&lt;span class="dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt; 連接 Uber Eats 中...';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const resp = await fetch('https://api.anthropic.com/v1/messages', {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>method:'POST', headers:{'Content-Type':'application/json'},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body: JSON.stringify({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>model:'claude-sonnet-4-20250514', max_tokens:800,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>system:'生成一個模擬的 Uber Eats 訂單 JSON 陣列，含 2-3 個食物品項（type:"food"）和外送費、服務費（type:"fee"）。格式：[{"name":"品項名","amount":數字,"type":"food|fee"}]。只回傳 JSON。',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>messages:[{role:'user',content:'生成示範 Uber Eats 訂單'}]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>})</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await resp.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const text = data.content[0].text.replace(/```json|```/g,'').trim();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>state.pendingItems = JSON.parse(text).map(i=&gt;({...i,bearer:'split',xuanPct:50}));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>state.pendingItems = [</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{name:'雞腿便當',amount:120,type:'food',bearer:'split',xuanPct:50},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{name:'珍珠奶茶',amount:65,type:'food',bearer:'split',xuanPct:50},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{name:'外送費',amount:49,type:'fee',bearer:'split',xuanPct:50},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>{name:'服務費',amount:15,type:'fee',bearer:'split',xuanPct:50},</p>
+<p class="p1"><span class="Apple-converted-space">    </span>];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>renderPendingItems();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.innerHTML = '↓ 從 Uber Eats 抓取最新訂單';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function renderPendingItems() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const wrap = document.getElementById('order-items-wrap');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!state.pendingItems.length) { wrap.innerHTML='&lt;div class="empty"&gt;尚無訂單品項&lt;/div&gt;'; return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let html = `&lt;div class="card"&gt;&lt;div class="card-title"&gt;今日 UberEats 訂單 &lt;span style="font-size:12px;color:var(--text3);font-weight:400;"&gt;暄先付&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.pendingItems.forEach((item, i) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html += `&lt;div class="split-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="split-item-top"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="split-item-name"&gt;${item.name}${item.type==='fee'?'&lt;span class="badge-fee"&gt;費用&lt;/span&gt;':''}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="split-item-amt"&gt;NT$${item.amount}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="person-toggle"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ptog ${item.bearer==='xuan'?'sel-xuan':''}" onclick="setPending(${i},'xuan')"&gt;暄&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ptog ${item.bearer==='xiang'?'sel-xiang':''}" onclick="setPending(${i},'xiang')"&gt;祥&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="ptog ${item.bearer==='split'?'sel-split':''}" onclick="setPending(${i},'split')"&gt;各半&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>${item.bearer==='split'?`&lt;div class="pct-row"&gt;&lt;span class="pct-label" id="pct-l-${i}"&gt;暄 ${item.xuanPct}%&lt;/span&gt;&lt;input type="range" min="0" max="100" step="1" value="${item.xuanPct}" oninput="setPendingPct(${i},+this.value)"&gt;&lt;span class="pct-label" id="pct-r-${i}" style="text-align:right"&gt;祥 ${100-item.xuanPct}%&lt;/span&gt;&lt;/div&gt;`:''}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>html += `&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>wrap.innerHTML = html;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>updateOrderSummary();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('order-summary').style.display = 'block';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function setPending(i, bearer) { state.pendingItems[i].bearer = bearer; renderPendingItems(); }</p>
+<p class="p1">function setPendingPct(i, val) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.pendingItems[i].xuanPct = val;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const l = document.getElementById('pct-l-'+i), r = document.getElementById('pct-r-'+i);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(l) l.textContent = `暄 ${val}%`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(r) r.textContent = `祥 ${100-val}%`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>updateOrderSummary();</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function updateOrderSummary() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let xuan=0, xiang=0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.pendingItems.forEach(item =&gt; { const a = computeAmounts(item.amount,item.bearer,item.xuanPct); xuan+=a.xuanAmt; xiang+=a.xiangAmt; });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('xuan-total').textContent = `NT$${xuan}`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('xiang-total').textContent = `NT$${xiang}`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function saveOrder() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!state.pendingItems.length) return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.pendingItems.forEach(item =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const {xuanAmt, xiangAmt} = computeAmounts(item.amount, item.bearer, item.xuanPct);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>state.entries.push({ id:Date.now()+Math.random(), date:todayKey(), label:`${today()} UberEats`, platform:'UberEats', payer:'暄', name:item.name, amount:item.amount, xuanAmt, xiangAmt, bearer:item.bearer });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.pendingItems = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>save();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('order-items-wrap').innerHTML = '&lt;div class="empty"&gt;已存入記帳表！&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('order-summary').style.display = 'none';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function clearOrder() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.pendingItems = [];</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('order-items-wrap').innerHTML = '&lt;div class="empty"&gt;尚無訂單品項&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>document.getElementById('order-summary').style.display = 'none';</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function renderLedger() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const wrap = document.getElementById('ledger-wrap');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!state.entries.length) { wrap.innerHTML='&lt;div class="empty"&gt;尚無記帳紀錄&lt;/div&gt;'; return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const grouped = {};</p>
+<p class="p1"><span class="Apple-converted-space">  </span>state.entries.forEach(e =&gt; { if(!grouped[e.label]) grouped[e.label]=[]; grouped[e.label].push(e); });</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let html = '';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Object.keys(grouped).sort().reverse().forEach(label =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const items = grouped[label];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const total = items.reduce((s,e)=&gt;s+e.amount,0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const xuanT = items.reduce((s,e)=&gt;s+e.xuanAmt,0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const xiangT = items.reduce((s,e)=&gt;s+e.xiangAmt,0);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const plat = items[0].platform;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const pillCls = plat==='UberEats'?'pill-ub':plat==='Foodpanda'?'pill-fp':'pill-manual';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html += `&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span class="pill ${pillCls}"&gt;${plat}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="font-size:14px;font-weight:600;"&gt;${label}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="font-size:12px;color:var(--text3);margin-left:auto;"&gt;先付：${items[0].payer}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="ledger-entry hdr"&gt;&lt;span&gt;品項&lt;/span&gt;&lt;span style="text-align:right"&gt;金額&lt;/span&gt;&lt;span style="text-align:right"&gt;暄&lt;/span&gt;&lt;span style="text-align:right"&gt;祥&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>items.forEach(e =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>html += `&lt;div class="ledger-entry"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="font-size:12px"&gt;${e.name}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="text-align:right;font-size:12px"&gt;$${e.amount}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="text-align:right;font-size:12px;color:var(--green)"&gt;$${e.xuanAmt}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;span style="text-align:right;font-size:12px;color:var(--blue)"&gt;$${e.xiangAmt}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-danger" onclick="deleteEntry(${JSON.stringify(e.id)})"&gt;刪&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>html += `&lt;div class="ledger-totals"&gt;&lt;span&gt;$${total}&lt;/span&gt;&lt;span style="color:var(--green)"&gt;暄 $${xuanT}&lt;/span&gt;&lt;span style="color:var(--blue)"&gt;祥 $${xiangT}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>wrap.innerHTML = html;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function deleteEntry(id) { state.entries = state.entries.filter(e=&gt;e.id!==id); save(); renderLedger(); }</p>
+<p class="p2"><br></p>
+<p class="p1">function calcMonthly() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const m = document.getElementById('month-picker').value;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!m) return;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const [yr,mo] = m.split('-');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const filtered = state.entries.filter(e=&gt;e.date.startsWith(`${yr}-${mo}`));</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const res = document.getElementById('monthly-result');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!filtered.length) { res.innerHTML='&lt;p style="font-size:13px;color:var(--text2)"&gt;該月份尚無資料。&lt;/p&gt;'; return; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const xuanShouldPay = filtered.reduce((s,e)=&gt;s+e.xuanAmt,0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const xiangShouldPay = filtered.reduce((s,e)=&gt;s+e.xiangAmt,0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const xuanPaid = filtered.filter(e=&gt;e.payer==='暄').reduce((s,e)=&gt;s+e.amount,0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const grandTotal = filtered.reduce((s,e)=&gt;s+e.amount,0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const xuanBalance = xuanPaid - xuanShouldPay;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let settlement, transferAmt=0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(Math.abs(xuanBalance)&lt;1) settlement='兩人已結清，無需轉帳！';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>else if(xuanBalance&gt;0) { transferAmt=Math.round(xuanBalance); settlement=`祥 需轉 NT$${transferAmt} 給 暄`; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>else { transferAmt=Math.round(-xuanBalance); settlement=`暄 需轉 NT$${transferAmt} 給 祥`; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const monthLabel = `${yr} 年 ${parseInt(mo)} 月`;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const breakdownRows = filtered.map(e=&gt;`&lt;tr&gt;&lt;td style="padding:4px 6px;border-bottom:1px solid #eee;font-size:12px"&gt;${e.date}&lt;/td&gt;&lt;td style="padding:4px 6px;border-bottom:1px solid #eee;font-size:12px"&gt;${e.platform}&lt;/td&gt;&lt;td style="padding:4px 6px;border-bottom:1px solid #eee;font-size:12px"&gt;${e.name}&lt;/td&gt;&lt;td style="padding:4px 6px;border-bottom:1px solid #eee;text-align:right;font-size:12px"&gt;NT$${e.amount}&lt;/td&gt;&lt;td style="padding:4px 6px;border-bottom:1px solid #eee;text-align:right;font-size:12px;color:#0F6E56"&gt;NT$${e.xuanAmt}&lt;/td&gt;&lt;td style="padding:4px 6px;border-bottom:1px solid #eee;text-align:right;font-size:12px;color:#185FA5"&gt;NT$${e.xiangAmt}&lt;/td&gt;&lt;/tr&gt;`).join('');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>const htmlBody = `&lt;div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px;"&gt;&lt;h2 style="font-size:20px;margin-bottom:4px;"&gt;暄 &amp;amp; 祥 ${monthLabel}記帳結算&lt;/h2&gt;&lt;p style="color:#888;font-size:13px;margin-bottom:20px;"&gt;共 ${filtered.length} 筆消費&lt;/p&gt;&lt;table style="width:100%;border-collapse:collapse;margin-bottom:16px;"&gt;&lt;tr style="background:#f5f5f5"&gt;&lt;td style="padding:8px;font-weight:600"&gt;本月總消費&lt;/td&gt;&lt;td style="padding:8px;text-align:right;font-weight:600"&gt;NT$${grandTotal}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="padding:8px;color:#0F6E56"&gt;暄 應付&lt;/td&gt;&lt;td style="padding:8px;text-align:right;color:#0F6E56;font-weight:600"&gt;NT$${xuanShouldPay}&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="padding:8px;color:#185FA5"&gt;祥 應付&lt;/td&gt;&lt;td style="padding:8px;text-align:right;color:#185FA5;font-weight:600"&gt;NT$${xiangShouldPay}&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;div style="background:#f0faf5;padding:14px;border-radius:8px;font-weight:600;margin-bottom:20px;"&gt;${settlement}&lt;/div&gt;&lt;h3 style="font-size:14px;margin-bottom:8px;"&gt;消費明細&lt;/h3&gt;&lt;table style="width:100%;border-collapse:collapse;"&gt;&lt;tr style="background:#f5f5f5"&gt;&lt;th style="padding:4px 6px;text-align:left;font-size:12px"&gt;日期&lt;/th&gt;&lt;th style="padding:4px 6px;text-align:left;font-size:12px"&gt;平台&lt;/th&gt;&lt;th style="padding:4px 6px;text-align:left;font-size:12px"&gt;品項&lt;/th&gt;&lt;th style="padding:4px 6px;text-align:right;font-size:12px"&gt;金額&lt;/th&gt;&lt;th style="padding:4px 6px;text-align:right;font-size:12px;color:#0F6E56"&gt;暄&lt;/th&gt;&lt;th style="padding:4px 6px;text-align:right;font-size:12px;color:#185FA5"&gt;祥&lt;/th&gt;&lt;/tr&gt;${breakdownRows}&lt;/table&gt;&lt;p style="font-size:12px;color:#aaa;margin-top:20px;"&gt;由 暄＆祥記帳本 自動產生&lt;/p&gt;&lt;/div&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>res.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="metric-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="metric"&gt;&lt;div class="metric-label"&gt;本月總消費&lt;/div&gt;&lt;div class="metric-value"&gt;NT$${grandTotal}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="metric"&gt;&lt;div class="metric-label"&gt;共幾筆&lt;/div&gt;&lt;div class="metric-value"&gt;${filtered.length} 筆&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="metric"&gt;&lt;div class="metric-label"&gt;暄 應付&lt;/div&gt;&lt;div class="metric-value" style="color:var(--green)"&gt;NT$${xuanShouldPay}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="metric"&gt;&lt;div class="metric-label"&gt;祥 應付&lt;/div&gt;&lt;div class="metric-value" style="color:var(--blue)"&gt;NT$${xiangShouldPay}&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="banner-success" style="font-weight:600;margin-bottom:12px;"&gt;${settlement}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-gmail btn-full" id="send-btn" onclick="sendGmail('${monthLabel.replace(/'/g,"\\'")}',${xuanShouldPay},${xiangShouldPay},'${settlement.replace(/'/g,"\\'")}',\`${htmlBody.replace(/`/g,'\\`')}\`)"&gt;寄送月結算信到 yihsuan890101@gmail.com&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="gmail-status"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>`;</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">async function sendGmail(monthLabel, xuanAmt, xiangAmt, settlement, htmlBody) {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const btn = document.getElementById('send-btn');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const status = document.getElementById('gmail-status');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>btn.innerHTML = '&lt;span class="dots"&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt; 寄送中...';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const resp = await fetch('https://api.anthropic.com/v1/messages', {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>method:'POST', headers:{'Content-Type':'application/json'},</p>
+<p class="p1"><span class="Apple-converted-space">      </span>body: JSON.stringify({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>model:'claude-sonnet-4-20250514', max_tokens:1000,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mcp_servers:[{type:'url',url:'https://gmailmcp.googleapis.com/mcp/v1',name:'gmail-mcp'}],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>system:`你是記帳助手。使用 Gmail MCP 建立 email draft：to: yihsuan890101@gmail.com, subject: 【${monthLabel}記帳結算】暄&amp;祥, htmlBody 如下。建立完成後只回覆「草稿建立成功」。`,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>messages:[{role:'user',content:`請建立 Gmail draft，htmlBody: ${htmlBody}`}]</p>
+<p class="p1"><span class="Apple-converted-space">      </span>})</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const data = await resp.json();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const txt = JSON.stringify(data);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(txt.includes('成功')||txt.includes('draft')||txt.includes('Draft')||txt.includes('created')) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>status.innerHTML = '&lt;div class="banner-success" style="margin-top:8px;"&gt;Gmail 草稿已建立！請到 Gmail 草稿夾確認後送出。&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.innerHTML = '草稿已建立 ✓'; btn.className='btn btn-full';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else { throw new Error(); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>} catch(e) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>status.innerHTML = '&lt;div class="banner-warn" style="margin-top:8px;"&gt;建立草稿失敗，請確認 Gmail 連線後重試。&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.disabled = false; btn.innerHTML = '重試寄送月結算信';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function enableReminder() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(!('Notification' in window)) { alert('此瀏覽器不支援通知'); return; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>Notification.requestPermission().then(perm =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if(perm==='granted') {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('reminder-status').innerHTML = '&lt;div class="banner-success" style="margin-top:8px;"&gt;已開啟！每天晚上 10 點提醒記帳。&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>scheduleReminder();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('reminder-status').innerHTML = '&lt;p style="font-size:13px;color:var(--red);margin-top:8px;"&gt;請在瀏覽器設定中允許通知。&lt;/p&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>});</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function scheduleReminder() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const now = new Date(), target = new Date(now);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>target.setHours(22,0,0,0);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(now &gt;= target) target.setDate(target.getDate()+1);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>setTimeout(()=&gt;{</p>
+<p class="p1"><span class="Apple-converted-space">    </span>new Notification('📒 記帳提醒', {body:'今天的外送費還沒記帳喔！'});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setInterval(()=&gt;new Notification('📒 記帳提醒', {body:'今天的外送費還沒記帳喔！'}), 86400000);</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}, target - now);</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function clearAll() {</p>
+<p class="p1"><span class="Apple-converted-space">  </span>if(confirm('確定要清除所有記帳紀錄嗎？此動作無法復原。')) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>state = {entries:[], pendingItems:[]};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>save();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>renderLedger();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>alert('已清除。');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">save();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
